@@ -76,7 +76,7 @@ The **Smart Clinic Management System** solves this with a single normalized MySQ
 - [x] ERD — Crow's Foot notation
 - [x] ERD — Chen notation
 - [x] Relational schema (3NF) + DDL scripts
-- [ ] Triggers (appointment priority, drug-interaction check)
+
 
 
 ---
