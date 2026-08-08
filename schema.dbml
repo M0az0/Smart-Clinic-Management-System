@@ -1,5 +1,3 @@
-// Smart Clinic Management System - DBML source
-// Paste this into https://dbdiagram.io to regenerate/edit the ERD
 
 Table Department {
   DepartmentID int [pk, increment]
