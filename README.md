@@ -77,21 +77,8 @@ The **Smart Clinic Management System** solves this with a single normalized MySQ
 - [x] ERD — Chen notation
 - [x] Relational schema (3NF) + DDL scripts
 - [ ] Triggers (appointment priority, drug-interaction check)
-- [ ] View / Stored Procedure (doctor recommendation)
-- [ ] Sample data (DML)
-- [ ] Advanced queries (joins, subqueries, aggregate functions)
-- [ ] Final report write-up & presentation
 
-## 👥 Team Members
-
-| # | ID Number | Name |
-|---|---|---|
-| 1 | | |
-| 2 | | |
-| 3 | | |
-| 4 | | |
-| 5 | | |
 
 ---
 
-*Database Systems course project — Innovation University, Faculty of Computers and Information Technology.*
+
