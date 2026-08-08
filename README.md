@@ -1,75 +1,71 @@
-# 🏥 Smart Clinic Management System
+# 🏥 Smart Clinic Management System ⚕️💊
 
-### Intelligent Healthcare Assistant — Database Systems Project
+Relational database design and SQL-based intelligent decision support for clinic operations, built as a Database Systems course project.
 
-> A centralized relational database designed to modernize clinic operations, streamline appointment scheduling, organize medical records, and support safer prescription decisions — powered entirely by SQL.
+`MySQL` `Database Design` `ERD` `SQL Triggers` `3NF`
 
-**Innovation University — Faculty of Computers and Information Technology**
+## 📊 Project Overview
 
----
+This academic project applies relational database theory to model and manage clinic operations end-to-end, using:
 
-## 📌 Overview
+- **Patient & Doctor Management** — centralized, normalized records instead of paper/spreadsheets
+- **Appointment Scheduling** — conflict-free booking with urgency-based prioritization
+- **Prescription Safety** — structured multi-drug prescriptions with conflict detection
+- **Billing** — payment tracking tied to appointments
+- **SQL-Only Intelligence** — priority scoring, drug-interaction checks, and doctor recommendations, all implemented with Triggers, Views, and Stored Procedures (no external AI/ML)
 
-Traditional clinics often rely on manual or disconnected systems to manage patient records, doctor schedules, and appointments — leading to duplicate records, scheduling conflicts, slow retrieval of medical history, and prescription errors such as prescribing conflicting medications.
+## 🎯 Key Design Metrics
 
-The **Smart Clinic Management System** solves this with a single normalized MySQL database (3NF) covering the clinic's core operations, plus a set of lightweight *intelligent features* built entirely with SQL logic — no external AI/ML frameworks.
-
-## 🎯 Objectives
-
-- Organize patient, doctor, and appointment data in a centralized, normalized database
-- Reduce redundancy and prevent scheduling conflicts
-- Store and retrieve complete medical histories, prescriptions, and billing records efficiently
-- Automatically prioritize urgent cases in the appointment queue
-- Detect and warn against potentially conflicting drug prescriptions
-- Recommend suitable doctors based on specialization and current availability
-
-## ✨ Core Features
-
-| Module | What it does |
+| Metric | Value |
 |---|---|
-| 👤 **Patient Management** | Registers patient personal and medical details, keeps a continuous medical history per patient |
-| 👨‍⚕️ **Doctor & Department Management** | Tracks doctors, their specialization, department, and availability status |
-| 📅 **Appointment Management** | Schedules visits with a status (`Scheduled` / `Completed` / `Cancelled`) and an urgency level |
-| 🩺 **Medical Records** | Documents diagnoses and clinical notes per visit |
-| 💊 **Prescriptions** | Supports multiple drugs per prescription, each with its own dosage, frequency, and duration |
-| 💰 **Payments** | Tracks billing per appointment, payment method, and status |
+| Entities (Tables) | 10 |
+| Relationships | 13 |
+| Normal Form | 3NF |
+| Intelligent SQL Features | 3 (priority scoring, drug-conflict check, doctor recommendation) |
+| ERD Notations Provided | 2 (Crow's Foot + Chen) |
 
-## 🧠 Intelligent Features (SQL-only, no external AI/ML)
+## 📁 Project Structure
 
-| Feature | How it works |
-|---|---|
-| **Appointment Prioritization** | A trigger sets `PriorityScore` automatically from `UrgencyLevel` (`Normal` / `Urgent` / `Emergency`) whenever a new appointment is inserted |
-| **Drug Interaction Check** | A trigger checks the `DrugInteraction` reference table before a new `PrescriptionDetail` row is inserted, blocking known conflicting drug pairs by severity |
-| **Doctor Recommendation** | A view/stored procedure filters doctors by specialization and current availability |
+```
+├── Clinic_Project_Report.docx   # Full project report (intro, objectives, ERD, schema)
+├── ClinicDB_Schema.sql          # Executable MySQL DDL (CREATE DATABASE + 10 tables)
+├── schema.dbml                  # DBML source — edit/regenerate ERD on dbdiagram.io
+├── Schema.png           
+├── ERD_Chen.png                 # ERD — Chen notation (conceptual view)
+└── README.md
+```
 
-> ⚠️ The three features above are implemented via **Triggers, Views, and Stored Procedures** — see [Project Status](#-project-status) for what's already built vs. still in progress.
+## 🚀 Quick Start
 
-## 🗂️ Database Entities (10 tables, 3NF)
+```bash
+# 1. Open MySQL Workbench (or any MySQL client) and connect to your server
+
+# 2. Run the schema script — creates the database and all 10 tables
+#    File > Open SQL Script > ClinicDB_Schema.sql > Execute (⚡)
+
+# 3. (Optional) View/edit the ERD interactively
+#    Paste schema.dbml into https://dbdiagram.io
+```
+
+## 🧠 Intelligent Features (SQL-only)
+
+The project includes 3 lightweight intelligent features implemented entirely in SQL:
+
+1. **Appointment Priority Trigger** — sets `PriorityScore` automatically from `UrgencyLevel` (`Normal` / `Urgent` / `Emergency`)
+2. **Drug Interaction Check Trigger** — blocks a new prescription line if it conflicts with a known pair in `DrugInteraction`
+3. **Doctor Recommendation View/Procedure** — filters doctors by specialization and current availability
+
+> Status: schema and ERD are complete; the three features above are the next implementation milestone — see [Project Status](#-project-status).
+
+## 🗄️ Database Entities
 
 `Department` · `Doctor` · `Patient` · `Appointment` · `MedicalRecord` · `Prescription` · `Drug` · `PrescriptionDetail` · `DrugInteraction` · `Payment`
 
-## 🛠️ Tech Stack
+## 🔧 Technologies
 
-- **DBMS:** MySQL
-- **Modeling:** ERD in both Crow's Foot (implementation-ready) and Chen (conceptual) notation, designed with [dbdiagram.io](https://dbdiagram.io)
-- **Schema:** Relational schema normalized to 3NF
-
-## 📂 Repository Contents
-
-| File | Description |
-|---|---|
-| `Clinic_Project_Report.docx` | Full project report — introduction, objectives, ERD, schema |
-| `ClinicDB_Schema.sql` | Executable MySQL DDL script (`CREATE DATABASE` + all 10 tables with PK/FK constraints) |
-| `schema.dbml` | DBML source — paste into dbdiagram.io to regenerate or edit the ERD |
-| `ERD_CrowsFoot.png` | ERD in Crow's Foot notation (implementation-ready view) |
-| `ERD_Chen.png` | ERD in Chen notation (conceptual view: entities, attributes, relationships as diamonds) |
-
-## 🚀 Getting Started
-
-1. **Clone or download** this repository
-2. Open **MySQL Workbench** (or any MySQL client) and connect to your server
-3. Open `ClinicDB_Schema.sql` and run it (⚡ Execute) — this creates the `ClinicDB` database and all 10 tables in the correct order
-4. Open `schema.dbml` on [dbdiagram.io](https://dbdiagram.io) if you want to view or edit the ERD interactively
+- MySQL Workbench
+- dbdiagram.io (DBML) for ERD design
+- Draw.io / Graphviz-based diagrams for the Chen-notation ERD
 
 ## ✅ Project Status
 
@@ -78,7 +74,14 @@ The **Smart Clinic Management System** solves this with a single normalized MySQ
 - [x] Relational schema (3NF) + DDL scripts
 
 
+## 🎓 Academic Context
 
----
+**Course:** Database Systems
+**University:** Innovation University — Faculty of Computers and Information Technology
+**Project:** Smart Clinic Management System with Intelligent Healthcare Assistant
 
+## 📄 License
 
+This project is available for educational purposes only.
+
+⭐ Star this repo if you found it helpful!
