@@ -1,0 +1,103 @@
+// Smart Clinic Management System - DBML source
+// Paste this into https://dbdiagram.io to regenerate/edit the ERD
+
+Table Department {
+  DepartmentID int [pk, increment]
+  DepartmentName varchar(100) [not null, unique]
+  Location varchar(150)
+  Phone varchar(20)
+}
+
+Table Doctor {
+  DoctorID int [pk, increment]
+  Name varchar(100) [not null]
+  Specialization varchar(100) [not null]
+  Phone varchar(20)
+  Email varchar(100) [unique]
+  AvailabilityStatus varchar(20) [default: 'Available']
+  DepartmentID int [not null]
+}
+
+Table Patient {
+  PatientID int [pk, increment]
+  Name varchar(100) [not null]
+  DateOfBirth date [not null]
+  Gender varchar(10)
+  Phone varchar(20) [not null]
+  Address varchar(200)
+  BloodType varchar(5)
+}
+
+Table Appointment {
+  AppointmentID int [pk, increment]
+  AppointmentDate date [not null]
+  AppointmentTime time [not null]
+  Status varchar(20) [default: 'Scheduled']
+  UrgencyLevel varchar(20) [default: 'Normal']
+  PriorityScore int [default: 0]
+  PatientID int [not null]
+  DoctorID int [not null]
+}
+
+Table MedicalRecord {
+  RecordID int [pk, increment]
+  VisitDate date [not null]
+  Diagnosis varchar(255)
+  Notes text
+  PatientID int [not null]
+  DoctorID int [not null]
+}
+
+Table Prescription {
+  PrescriptionID int [pk, increment]
+  PrescriptionDate date [not null]
+  PatientID int [not null]
+  DoctorID int [not null]
+  RecordID int [not null]
+}
+
+Table Drug {
+  DrugID int [pk, increment]
+  DrugName varchar(100) [not null, unique]
+  Description varchar(255)
+}
+
+Table PrescriptionDetail {
+  PrescriptionDetailID int [pk, increment]
+  PrescriptionID int [not null]
+  DrugID int [not null]
+  Dosage varchar(50) [not null]
+  Frequency varchar(50) [not null]
+  Duration varchar(50) [not null]
+}
+
+Table DrugInteraction {
+  InteractionID int [pk, increment]
+  Drug1ID int [not null]
+  Drug2ID int [not null]
+  SeverityLevel varchar(20) [not null]
+  Description varchar(255)
+}
+
+Table Payment {
+  PaymentID int [pk, increment]
+  AppointmentID int [not null]
+  Amount decimal(10,2) [not null]
+  PaymentDate date [not null]
+  PaymentMethod varchar(30)
+  PaymentStatus varchar(20) [default: 'Pending']
+}
+
+Ref: Department.DepartmentID < Doctor.DepartmentID
+Ref: Patient.PatientID < Appointment.PatientID
+Ref: Doctor.DoctorID < Appointment.DoctorID
+Ref: Patient.PatientID < MedicalRecord.PatientID
+Ref: Doctor.DoctorID < MedicalRecord.DoctorID
+Ref: Patient.PatientID < Prescription.PatientID
+Ref: Doctor.DoctorID < Prescription.DoctorID
+Ref: MedicalRecord.RecordID < Prescription.RecordID
+Ref: Prescription.PrescriptionID < PrescriptionDetail.PrescriptionID
+Ref: Drug.DrugID < PrescriptionDetail.DrugID
+Ref: Drug.DrugID < DrugInteraction.Drug1ID
+Ref: Drug.DrugID < DrugInteraction.Drug2ID
+Ref: Appointment.AppointmentID < Payment.AppointmentID
