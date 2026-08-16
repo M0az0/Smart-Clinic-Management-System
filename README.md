@@ -2,7 +2,7 @@
 
 Relational database design and SQL-based intelligent decision support for clinic operations, built as a Database Systems course project.
 
-`MySQL` `Database Design` `ERD` `SQL Triggers` `3NF`
+`MySQL` `SQL Server` `Database Design` `ERD` `SQL Triggers` `3NF`
 
 ## 📊 Project Overview
 
@@ -27,24 +27,34 @@ This academic project applies relational database theory to model and manage cli
 ## 📁 Project Structure
 
 ```
-├── Clinic_Project_Report.docx   # Full project report (intro, objectives, ERD, schema)
-├── ClinicDB_Schema.sql          # Executable MySQL DDL (CREATE DATABASE + 10 tables)
-├── schema.dbml                  # DBML source — edit/regenerate ERD on dbdiagram.io
-├── Schema.png           
-├── ERD_Chen.png                 # ERD — Chen notation (conceptual view)
+├── Clinic_Project_Report.docx        # Full project report (intro, objectives, ERD, schema)
+├── ClinicDB_Schema_MySQL.sql         # Executable MySQL DDL (CREATE DATABASE + 10 tables)
+├── ClinicDB_Schema_SQLServer.sql     # Executable SQL Server DDL (same 10 tables, T-SQL syntax)
+├── schema.dbml                       # DBML source — edit/regenerate ERD on dbdiagram.io
+├── ERD_CrowsFoot.png                 # ERD — Crow's Foot notation (implementation-ready)
+├── ERD_Chen.png                      # ERD — Chen notation (conceptual view)
 └── README.md
 ```
 
 ## 🚀 Quick Start
 
+**Option A — MySQL**
 ```bash
-# 1. Open MySQL Workbench (or any MySQL client) and connect to your server
+# 1. Open MySQL Workbench and connect to your server
+# 2. File > Open SQL Script > ClinicDB_Schema_MySQL.sql > Execute (⚡)
+```
 
-# 2. Run the schema script — creates the database and all 10 tables
-#    File > Open SQL Script > ClinicDB_Schema.sql > Execute (⚡)
+**Option B — SQL Server**
+```bash
+# 1. Open SQL Server Management Studio (SSMS) and connect to your server
+# 2. File > Open > File > ClinicDB_Schema_SQLServer.sql > Execute (F5)
+```
 
-# 3. (Optional) View/edit the ERD interactively
-#    Paste schema.dbml into https://dbdiagram.io
+Both scripts create the same 10 tables, keys, and constraints — pick whichever DBMS you have installed.
+
+**(Optional) View/edit the ERD interactively**
+```bash
+# Paste schema.dbml into https://dbdiagram.io
 ```
 
 ## 🧠 Intelligent Features (SQL-only)
@@ -63,16 +73,22 @@ The project includes 3 lightweight intelligent features implemented entirely in 
 
 ## 🔧 Technologies
 
+- MySQL
 - MySQL Workbench
-- dbdiagram.io (DBML) for ERD design
-- Draw.io / Graphviz-based diagrams for the Chen-notation ERD
+- Microsoft SQL Server
+- SQL Server Management Studio (SSMS)
+- dbdiagram.io (DBML) for ERD design and schema generation
 
 ## ✅ Project Status
 
 - [x] ERD — Crow's Foot notation
 - [x] ERD — Chen notation
-- [x] Relational schema (3NF) + DDL scripts
-
+- [x] Relational schema (3NF) + DDL scripts (MySQL and SQL Server versions)
+- [ ] Triggers (appointment priority, drug-interaction check)
+- [ ] View / Stored Procedure (doctor recommendation)
+- [ ] Sample data (DML)
+- [ ] Advanced queries (joins, subqueries, aggregate functions)
+- [ ] Final report write-up & presentation
 
 ## 🎓 Academic Context
 
